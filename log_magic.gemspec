@@ -14,6 +14,8 @@ Gem::Specification.new do |s|
     'http://rubygems.org/gems/log_magick'
   s.license       = 'MIT'
 
+  s.executables << 'log_magic'
+
   s.add_dependency 'file-tail'
   s.add_development_dependency 'byebug'
 end
