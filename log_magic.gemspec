@@ -15,7 +15,9 @@ Gem::Specification.new do |s|
   s.license       = 'MIT'
 
   s.executables << 'log_magic'
+  s.executables << 'start_explainer_server'
 
   s.add_dependency 'file-tail'
+  s.add_dependency 'rack'
   s.add_development_dependency 'byebug'
 end

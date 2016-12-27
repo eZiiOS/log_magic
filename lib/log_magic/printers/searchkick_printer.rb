@@ -17,6 +17,7 @@ class LogMagic::SearchkickPrinter
     <------------------------------------------
     #{pretty_print_json(extract_query_json)}
     ------------------------------------------>
+    http://localhost:7467
     """
   end
 end
