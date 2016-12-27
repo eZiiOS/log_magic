@@ -10,6 +10,7 @@ class LogMagic::SearchkickRefiner
   end
 
   def output
-    lines.last
+    searchkick_printer = ::LogMagic::SearchkickPrinter.new(lines.last)
+    searchkick_printer.print
   end
 end

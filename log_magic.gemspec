@@ -15,4 +15,5 @@ Gem::Specification.new do |s|
   s.license       = 'MIT'
 
   s.add_dependency 'file-tail'
+  s.add_development_dependency 'byebug'
 end

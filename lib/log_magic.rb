@@ -40,5 +40,7 @@ class LogMagic
 end
 
 
+require 'log_magic/utils/json_utils'
 require 'log_magic/log_listener'
 require 'log_magic/refiners/searchkick_refiner'
+require 'log_magic/printers/searchkick_printer'
