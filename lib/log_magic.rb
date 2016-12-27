@@ -1,10 +1,17 @@
 require 'file-tail'
 
 class LogMagic
+  attr_reader :persistance_layer
+
   def initialize(log_file_name)
     @log_file_name = log_file_name
     @refiners = []
+    @persistance_layer = PersistanceLayer.new
     add_searchkick_refiner
+  end
+
+  def database_name
+    @persistance_layer.database_name
   end
 
   def initialize_listener
@@ -14,8 +21,8 @@ class LogMagic
   def start
     @log_listener.listen do |line|
       add_line_to_refiners(line)
-      check_for_refiner_output do |output|
-        puts output
+      check_for_refiner_match do |refiner|
+        puts refiner.compute(persistance_layer)
       end
     end
   end
@@ -26,10 +33,10 @@ class LogMagic
     end
   end
 
-  def check_for_refiner_output
+  def check_for_refiner_match
     @refiners.any? do |refiner|
       if refiner.matches?
-        yield refiner.output
+        yield refiner
       end
     end
   end
@@ -45,4 +52,5 @@ require 'log_magic/log_listener'
 require 'log_magic/refiners/searchkick_refiner'
 require 'log_magic/printers/searchkick_printer'
 
-require 'log_magic/explainer_server'
+require 'log_magic/explainers/searchkick_explainer'
+require 'log_magic/persistance_layer'

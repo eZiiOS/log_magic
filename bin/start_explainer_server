@@ -1,6 +1,0 @@
-#!/usr/bin/env ruby
-
-require 'log_magic'
-
-explainer_server = LogMagic::ExplainerServer.new
-explainer_server.start

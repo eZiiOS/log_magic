@@ -2,12 +2,17 @@
 
 require 'log_magic'
 
-explainer_server_job = fork do
-  exec 'start_explainer_server'
-end
-Process.detach(explainer_server_job)
+begin
+  log_magic = LogMagic.new(ARGV[0])
 
-puts ARGV[0]
-log_magic = LogMagic.new(ARGV[0])
-log_magic.initialize_listener
-log_magic.start
+  server = fork do
+    explainer_server = LogMagic::SearchkickExplainer.new
+    explainer_server.start
+  end
+  Process.detach(server)
+
+  log_magic.initialize_listener
+  log_magic.start
+ensure
+  `kill -9 #{server}` unless server.nil?
+end
