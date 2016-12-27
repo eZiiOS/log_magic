@@ -4,20 +4,11 @@ class LogMagic::LogListener
   end
 
   def listen
-    open_file
-    seek_file_end
-
-    while true
-       select([@f])
-       yield(@f)
+    File.open(@log_file_name) do |log|
+      log.extend(File::Tail)
+      log.interval = 1
+      log.backward(1)
+      log.tail { |line| yield line }
     end
-  end
-
-  def open_file
-    @f = File.open(file,"r") unless @f.present?
-  end
-
-  def seek_file_end
-    @f.seek(0,IO::SEEK_END)
   end
 end

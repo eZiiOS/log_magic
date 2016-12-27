@@ -1,3 +1,2 @@
-cd ..
 gem build log_magic.gemspec
 gem install log_magic-0.0.0.gem

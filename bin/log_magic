@@ -3,7 +3,6 @@
 require 'log_magic'
 
 puts ARGV[0]
-log_magic = LogMagic.new
-log_magic.log_file_name = ARGV[0]
-log_magi.initialize_listener
+log_magic = LogMagic.new(ARGV[0])
+log_magic.initialize_listener
 log_magic.start

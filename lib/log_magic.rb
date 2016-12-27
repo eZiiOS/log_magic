@@ -1,17 +1,20 @@
-require 'log_magic/log_listener'
+require 'file-tail'
 
 class LogMagic
-  def log_file_name=(log_file_name)
+  def initialize(log_file_name)
     @log_file_name = log_file_name
   end
 
   def initialize_listener
-    @log_listener = LogListener.new(log_file_name)
+    @log_listener = LogListener.new(@log_file_name)
   end
 
   def start
-    @log_listener.listen do |file|
-       puts file.gets # "Found it!" if f.gets =~ pattern
+    @log_listener.listen do |line|
+       puts line
     end
   end
 end
+
+
+require 'log_magic/log_listener'

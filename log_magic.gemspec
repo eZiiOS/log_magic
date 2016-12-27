@@ -9,8 +9,10 @@ Gem::Specification.new do |s|
   """
   s.authors     = ["Manuel Korfmann"]
   s.email       = 'manu@korfmann.info'
-  s.files       = ["lib/log_magic.rb"]
+  s.files       =  Dir.glob("{bin,lib}/**/*")
   s.homepage    =
     'http://rubygems.org/gems/log_magick'
   s.license       = 'MIT'
+
+  s.add_dependency 'file-tail'
 end
