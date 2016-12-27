@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'log_magic'
-  s.version     = '0.0.0'
+  s.version     = '0.0.1'
   s.date        = '2016-12-27'
   s.summary     = "LogMagic explains your logs"
   s.description = """
