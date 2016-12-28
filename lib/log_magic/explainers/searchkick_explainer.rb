@@ -5,8 +5,8 @@ require 'haml'
 class LogMagic::SearchkickExplainer
   include ::LogMagic::JSONUtils
   include ::LogMagic::TemplatingUtils
-  
-  def initialize()
+
+  def initialize
     @persistance_layer = ::LogMagic::PersistanceLayer.new
   end
 
@@ -22,20 +22,8 @@ class LogMagic::SearchkickExplainer
     SettingsExplainerSection.new(elasticsearch_url)
   end
 
-  def explainer_section_classes
-    [
-      DisMaxExplainerSection,
-      BoostExplainerSection,
-      MatchExplainerSection
-    ]
-  end
-
-  def explainer_sections
-    explainer_section_classes.map do |explainer_section_class|
-      explainer_section_class.new(query_json)
-    end.select do |explainer_section|
-      explainer_section.matches?
-    end
+  def explained_query
+    QueryExplainerSection.new(query_json)
   end
 
   def start

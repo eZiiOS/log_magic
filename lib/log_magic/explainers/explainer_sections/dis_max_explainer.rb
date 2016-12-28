@@ -5,12 +5,8 @@ class LogMagic::SearchkickExplainer::DisMaxExplainerSection
     @query_json = query_json
   end
 
-  def matches?
-    @query_json =~ /[^\w]dis_max[^\w]/
-  end
-
-  def explanation
-    rendered_template
+  def match_regex
+    /[^\w]dis_max[^\w]/
   end
 
   def template_name

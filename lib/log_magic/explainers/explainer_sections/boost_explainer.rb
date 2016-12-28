@@ -5,12 +5,8 @@ class LogMagic::SearchkickExplainer::BoostExplainerSection
     @query_json = query_json
   end
 
-  def matches?
-    @query_json =~ /[^\w]boost[^\w]/
-  end
-
-  def explanation
-    rendered_template
+  def match_regex
+     /[^\w]boost[^\w]/
   end
 
   def template_name

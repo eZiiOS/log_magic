@@ -1,8 +1,5 @@
-- explainer_sections.each do |explainer_section|
-  = explainer_section.explanation
-
-= settings_explainer_section.explanation
-
 %h2 Query
 %p
-  = pretty_print_json(query_json)
+  = explained_query.explanation
+
+= settings_explainer_section.explanation

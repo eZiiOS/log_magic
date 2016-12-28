@@ -9,4 +9,8 @@ module LogMagic::TemplatingUtils
       File.join(__FILE__, '..', '..', 'explainer_templates', template_name)
     )
   end
+
+  def enriche
+    @query_json.gsub!(match_regex, rendered_template)
+  end
 end
