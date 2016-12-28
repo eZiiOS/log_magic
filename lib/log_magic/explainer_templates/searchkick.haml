@@ -1,4 +1,7 @@
 #h2 Query
 
+- explainer_sections.each do |explainer_section|
+  = explainer_section.explanation
+
 %p
   = pretty_print_json(query_json)

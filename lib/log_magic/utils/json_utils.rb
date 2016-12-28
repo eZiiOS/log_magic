@@ -8,4 +8,8 @@ module LogMagic::JSONUtils
   def parse_json(json)
     JSON.parse(json)
   end
+
+  def query_hash
+    JSON.parse(query_json)
+  end
 end

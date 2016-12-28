@@ -21,4 +21,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'haml'
   s.add_dependency 'redis'
   s.add_development_dependency 'byebug'
+  s.add_development_dependency 'minitest'
 end
