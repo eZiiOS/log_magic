@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'log_magic'
-  s.version     = '0.0.2'
+  s.version     = '0.0.3'
   s.date        = '2016-12-27'
   s.summary     = "LogMagic explains your logs"
   s.description = """
@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email       = 'manu@korfmann.info'
   s.files       =  Dir.glob("{bin,lib}/**/*")
   s.homepage    =
-    'http://rubygems.org/gems/log_magick'
+    'https://github.com/ManuelArno/log_magic'
   s.license       = 'MIT'
 
   s.executables << 'log_magic'

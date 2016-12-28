@@ -5,15 +5,21 @@ require 'haml'
 class LogMagic::SearchkickExplainer
   include ::LogMagic::JSONUtils
   include ::LogMagic::TemplatingUtils
-
-  attr_accessor :database_name
-
+  
   def initialize()
     @persistance_layer = ::LogMagic::PersistanceLayer.new
   end
 
   def query_json
-    @persistance_layer.retrieve_value(@uuid)
+    @persistance_layer.retrieve_value(@uuid, 'query_json')
+  end
+
+  def elasticsearch_url
+    @persistance_layer.retrieve_value(@uuid, 'elasticsearch_url')
+  end
+
+  def settings_explainer_section
+    SettingsExplainerSection.new(elasticsearch_url)
   end
 
   def explainer_section_classes
