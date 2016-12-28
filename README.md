@@ -12,4 +12,4 @@ gem install log_magic
 
 You will get prettified json for the generated ES query for now.
 
-
+![Example Output](https://raw.githubusercontent.com/ManuelArno/log_magic/master/example.png)

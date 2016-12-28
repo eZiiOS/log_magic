@@ -1,2 +1,2 @@
 gem build log_magic.gemspec
-gem install log_magic-0.0.4.gem
+gem install log_magic-0.0.5.gem
