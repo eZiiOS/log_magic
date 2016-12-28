@@ -1,4 +1,4 @@
-class LogMagic::SearchkickExplainer::DisMaxExplainerSection
+class LogMagic::SearchkickExplainer::BoostExplainerSection
   include ::LogMagic::TemplatingUtils
 
   def initialize(query_json)
@@ -6,7 +6,7 @@ class LogMagic::SearchkickExplainer::DisMaxExplainerSection
   end
 
   def matches?
-    @query_json =~ /[^\w]dis_max[^\w]/
+    @query_json =~ /[^\w]boost[^\w]/
   end
 
   def explanation
@@ -14,6 +14,6 @@ class LogMagic::SearchkickExplainer::DisMaxExplainerSection
   end
 
   def template_name
-    'dis_max.haml'
+    'boost.haml'
   end
 end

@@ -4,6 +4,7 @@ require 'haml'
 
 class LogMagic::SearchkickExplainer
   include ::LogMagic::JSONUtils
+  include ::LogMagic::TemplatingUtils
 
   attr_accessor :database_name
 
@@ -15,13 +16,17 @@ class LogMagic::SearchkickExplainer
     @persistance_layer.retrieve_value(@uuid)
   end
 
-  def explainer_section_klasses
-    [DisMaxExplainer]
+  def explainer_section_classes
+    [
+      DisMaxExplainerSection,
+      BoostExplainerSection,
+      MatchExplainerSection
+    ]
   end
 
   def explainer_sections
-    explainer_sections.map do |explainer_section_klass|
-      explainer_section_klass.new(query_json)
+    explainer_section_classes.map do |explainer_section_class|
+      explainer_section_class.new(query_json)
     end.select do |explainer_section|
       explainer_section.matches?
     end
@@ -36,18 +41,10 @@ class LogMagic::SearchkickExplainer
     end
 
     Rack::Handler::WEBrick.run app, Port: 7467,
-                                    Logger: WEBrick::Log::new('/dev/null')
+                                    Logger: WEBrick::Log::new('/tmp/log_magic.log')
   end
 
-  def rendered_template
-
-    engine = Haml::Engine.new(File.read(template_path))
-    engine.render(self)
-  end
-
-  def template_path
-    File.expand_path(
-      File.join(__FILE__, '..', '..', 'explainer_templates', 'searchkick.haml')
-    )
+  def template_name
+    'searchkick.haml'
   end
 end

@@ -48,9 +48,12 @@ end
 
 
 require 'log_magic/utils/json_utils'
+require 'log_magic/utils/templating_utils'
 require 'log_magic/log_listener'
 require 'log_magic/refiners/searchkick_refiner'
 require 'log_magic/printers/searchkick_printer'
 require 'log_magic/explainers/searchkick_explainer'
 require 'log_magic/explainers/explainer_sections/dis_max_explainer'
+require 'log_magic/explainers/explainer_sections/match_explainer'
+require 'log_magic/explainers/explainer_sections/boost_explainer'
 require 'log_magic/persistance_layer'

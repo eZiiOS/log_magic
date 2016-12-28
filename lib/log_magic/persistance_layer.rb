@@ -8,7 +8,7 @@ class LogMagic::PersistanceLayer
   end
 
   def add_value(value)
-    uuid = SecureRandom.uuid
+    uuid = ::SecureRandom.uuid
 
     @redis.set(uuid, value)
 
